@@ -22,7 +22,7 @@ class Reason(CommonInfo):
 
 class Category(CommonInfo):
     description = models.TextField(verbose_name=u'descripción')
-    color = models.CharField(max_length=6, default='FFFFFF')
+    color = models.CharField(max_length=200, default='FFFFFF')
 
 
 class Image(models.Model):

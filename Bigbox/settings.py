@@ -43,10 +43,15 @@ PROJECT_APPS = [
     "app.core",
 ]
 
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'django_filters',
+]
 
 INSTALLED_APPS = [
     *DJANGO_APPS,
     *PROJECT_APPS,
+    *THIRD_PARTY_APPS,
 ]
 
 MIDDLEWARE = [
@@ -86,7 +91,7 @@ WSGI_APPLICATION = 'Bigbox.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'BigBoxChallenge',
+        'NAME': 'bigboxchallenge',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': '127.0.0.1',
