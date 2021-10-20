@@ -30,7 +30,7 @@ ROOT_URLCONF = 'Bigbox.urls'
 
 # WSGI
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'Bigbox.wsgi.application'
 
 
 # Cors origins
