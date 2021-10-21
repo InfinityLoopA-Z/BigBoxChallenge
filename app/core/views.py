@@ -1,45 +1,41 @@
 from rest_framework import viewsets
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
+
 
 from . import models, serializers
 
 
+class StandardResultsSetPagination(PageNumberPagination):
+
+    """A results Pagination"""
+
+    page_size = 100
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+    def get_paginated_response(self, data):
+        return Response({
+            'links': {
+               'next': self.get_next_link(),
+               'previous': self.get_previous_link()
+            },
+            'count': self.page.paginator.count,
+            'total_pages': self.page.paginator.num_pages,
+            'results': data
+        })
+
+
 class BoxViewSet(viewsets.ModelViewSet):
-    """A ViewSet  of the box model (Father of BoxImage)"""
+    """A ViewSet of the Box model"""
     queryset = models.Box.objects.all()
-    serializer_class = serializers.BoxSerializer
+    serializer_class = serializers.BoxSerializerFather
     permission_classes = []
-
-
-class BoxImageViewSet(viewsets.ModelViewSet):
-    """A viewSet of the BoxImage Model (Child of Box)"""
-    queryset = models.BoxImage.all()
-    serializer_class = serializers.BoxImageSerializer
-    permission_classes = []
-
-
-class ActivityViewSet(viewsets.ModelViewSet):
-    """A ViewSet of the Activity model"""
-    queryset = models.Activity.objects.all()
-    serializer_class = serializers.ActivitySerializer
-    permission_classes = []
-
-
-class ActivityImageViewSet(viewsets.ModelViewSet):
-    """A ViewSet of the ActivityImage model"""
-    queryset = models.ActivityImage.objects.all()
-    serializer_class = serializers.ActivityImageSerializer
-    permission_classes = []
+    lookup_field = 'slug'
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """A ViewSet of the Category model"""
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
-    permission_classes = []
-
-
-class ReasonViewSet(viewsets.ModelViewSet):
-    """A ViewSet of the Reason model"""
-    queryset = models.Reason.objects.all()
-    serializer_class = serializers.ReasonSerializer
     permission_classes = []
