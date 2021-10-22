@@ -48,7 +48,7 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [  # noqa F405
 ADMIN_URL = env('DJANGO_ADMIN_URL')
 
 # Unicorn
-INSTALLED_APPS += ['gunicorn', 'whitenoise.runserver_nostatic', 'django.contrib.staticfiles'] # noqa F405
+INSTALLED_APPS += ['whitenoise.runserver_nostatic', 'django.contrib.staticfiles'] # noqa F405
 
 # WhiteNoise
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')  # noqa F405

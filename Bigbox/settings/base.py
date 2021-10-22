@@ -3,6 +3,7 @@
 """
 
 import environ
+import django_heroku
 
 BASE_DIR = environ.Path(__file__) - 3
 APPS_DIR = BASE_DIR.path('Bigbox')
@@ -185,3 +186,5 @@ ADMINS = [
         'felixhumbertocarabajal5@gmail.com', 'felixhumbertocarabajal@gmail.com'),
 ]
 MANAGERS = ADMINS
+
+django_heroku.settings(locals())
