@@ -18,7 +18,6 @@ class CommonInfo(Common):
 
 class Reason(CommonInfo):
     order = models.IntegerField(default=0, verbose_name='orden')
-    pass
 
 
 class Category(CommonInfo):
