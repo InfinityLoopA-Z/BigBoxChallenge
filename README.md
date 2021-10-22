@@ -2,7 +2,31 @@
 By: Carabajal, Félix Humberto  
 Email: felixhumbertocarabajal@gmail.com, felixhumbertocarabajal5@gmail.com  
 
+## Quick start
+### Installing this repo with git:
+```console
+foo@bar:~$ git clone https://github.com/InfinityLoopA-Z/BigBoxChallenge.git
+```
+Go inside downloaded repo and running poetry to install dependences
+```console
+foo@bar:~$ poetry install
+```
+### Create migrations:
+```console
+foo@bar:~$ python manage.py makemigrations
+```
+### Create relation in DB:
+```console
+foo@bar:~$ python manage.py migrate
+```
+### Running Server:
+```console
+foo@bar:~$ python manage.py runserver
+```
 
+
+
+## Readme inside challenge
 Ejemplo de url Box
 
 - http://127.0.0.1:8000/api/boxes/
