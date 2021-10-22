@@ -1,0 +1,18 @@
+
+  
+{
+    "name": "BigBoxChallenge",
+    "description": "This is a simple Rest-Api made in Django",
+    "image": "heroku/python",
+    "repository": "https://git.heroku.com/bigbox--challenge.git",
+    "keywords": ["python", "django" ],
+    "addons": [ "heroku-postgresql" ],
+    "environments": {
+      "deploy": {
+        "scripts": {
+          "deploy-setup": "python manage.py collectstatic --noinput",
+          "deploy": "python manage.py runserver"
+        }
+      }
+    }
+  }

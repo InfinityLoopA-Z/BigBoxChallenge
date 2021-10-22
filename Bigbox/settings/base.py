@@ -16,14 +16,6 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 
 CORS_ORIGIN_ALLOW_ALL = env.bool('CORS_ORIGIN_ALLOW_ALL', False)
 
-# DATABASES
-
-DATABASES = {
-    'default': env.db('DATABASE_URL'),
-}
-
-DATABASES['default']['ATOMIC_REQUESTS'] = True
-
 # URLs
 
 ROOT_URLCONF = 'Bigbox.urls'
