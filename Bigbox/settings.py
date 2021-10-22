@@ -3,15 +3,24 @@
 """
 
 import environ
-import django_heroku
 
-BASE_DIR = environ.Path(__file__) - 3
+
+BASE_DIR = environ.Path(__file__) - 2
+
 APPS_DIR = BASE_DIR.path('Bigbox')
 
 env = environ.Env()
 environ.Env.read_env(".env")
 
+# Heroku
+
+PORT = env.int('PORT', 5000)
+
+
 # Django
+SECRET_KEY = env('SECRET_KEY')
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['*'])
+
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
@@ -100,6 +109,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+DATABASES = {
+    'default': env.db()
+    }
+
 # Static files
 
 STATIC_ROOT = str(BASE_DIR('staticfiles'))
@@ -186,5 +199,3 @@ ADMINS = [
         'felixhumbertocarabajal5@gmail.com', 'felixhumbertocarabajal@gmail.com'),
 ]
 MANAGERS = ADMINS
-
-django_heroku.settings(locals())
