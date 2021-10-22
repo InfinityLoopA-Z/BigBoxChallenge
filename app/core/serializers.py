@@ -4,13 +4,14 @@ from . import models
 
 
 class BoxImageSerializer(serializers.ModelSerializer):
+    """A BoxImage Serializer (Child of Box)"""
     class Meta:
         model = models.BoxImage
         exclude = []
 
 
-class BoxSerializerFather(serializers.ModelSerializer):
-    """A serializer for box"""
+class BoxSerializer(serializers.ModelSerializer):
+    """A Box Serializer (Father of BoxImage"""
     boximage_set = BoxImageSerializer(many=True, allow_null=True)
 
     class Meta:
@@ -29,28 +30,56 @@ class BoxSerializerFather(serializers.ModelSerializer):
         extra_kwargs = {'url': {'lookup_field': 'slug'}}
 
 
-class BoxSerializer(serializers.ModelSerializer):
-    """ A serializer for box """
-
-    class Meta:
-        model = models.Box
-        fields = [
-            'name',
-            'slug',
-            'price',
-        ]
-
-
 class CategorySerializer(serializers.ModelSerializer):
-    """A serializer for Categories"""
+    """A Categories serializer"""
 
     box_set = BoxSerializer(many=True, allow_null=True)
 
     class Meta:
         model = models.Category
         fields = [
+            'order',
             'name',
             'slug',
             'description',
             'box_set'
         ]
+        lookup_field = 'slug'
+        extra_kwargs = {'url': {'lookup_field': 'slug'}}
+
+
+class ReasonSerializer(serializers.ModelSerializer):
+    """A Reason Serializer"""
+    class Meta:
+        model = models.Reason
+        exclude = []
+
+
+class ActivityImageSerializer(serializers.ModelSerializer):
+    """A ActivityImage Serializer (Child of Activity)"""
+    class Meta:
+        model = models.ActivityImage
+        exclude = []
+
+
+class ActivitySerializer(serializers.ModelSerializer):
+    """A Activity Serializer"""
+    box_set = BoxSerializer(many=True, allow_null=True)
+    reasons = ReasonSerializer(many=True, allow_null=True)
+    activityimage_set = ActivityImageSerializer(many=True, allow_null=True)
+
+    class Meta:
+        model = models.Activity
+        fields = [
+            'name',
+            'slug',
+            'internal_name',
+            'category',
+            'description',
+            'purchase_available',
+            'reasons',
+            'activityimage_set',
+            'box_set'
+        ]
+        lookup_field = 'slug'
+        extra_kwargs = {'url': {'lookup_field': 'slug'}}

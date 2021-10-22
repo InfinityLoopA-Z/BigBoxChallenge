@@ -1,41 +1,35 @@
 from rest_framework import viewsets
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+
+from . import models, serializers, filtersets, pagination
 
 
-from . import models, serializers
+class ActivityViewSet(viewsets.ModelViewSet):
+    """A viewset of Activity model"""
+    queryset = models.Activity.objects.all()
+    serializer_class = serializers.ActivitySerializer
+    permission_classes = []
 
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_class = filtersets.ActivityFilterSet
+    pagination_class = pagination.CustomPagination
 
-class StandardResultsSetPagination(PageNumberPagination):
-
-    """A results Pagination"""
-
-    page_size = 100
-    page_size_query_param = 'page_size'
-    max_page_size = 1000
-
-    def get_paginated_response(self, data):
-        return Response({
-            'links': {
-               'next': self.get_next_link(),
-               'previous': self.get_previous_link()
-            },
-            'count': self.page.paginator.count,
-            'total_pages': self.page.paginator.num_pages,
-            'results': data
-        })
+    lookup_field = 'slug'
 
 
 class BoxViewSet(viewsets.ModelViewSet):
-    """A ViewSet of the Box model"""
+    """A ViewSet of Box model"""
     queryset = models.Box.objects.all()
-    serializer_class = serializers.BoxSerializerFather
+    serializer_class = serializers.BoxSerializer
     permission_classes = []
     lookup_field = 'slug'
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
-    """A ViewSet of the Category model"""
+    """A ViewSet of Category model"""
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = []
+    lookup_field = 'slug'

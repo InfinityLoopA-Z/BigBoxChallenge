@@ -17,10 +17,12 @@ class CommonInfo(Common):
 
 
 class Reason(CommonInfo):
+    order = models.IntegerField(default=0, verbose_name='orden')
     pass
 
 
 class Category(CommonInfo):
+    order = models.IntegerField(default=0, verbose_name='orden')
     description = models.TextField(verbose_name=u'descripción')
     color = models.CharField(max_length=200, default='FFFFFF')
 

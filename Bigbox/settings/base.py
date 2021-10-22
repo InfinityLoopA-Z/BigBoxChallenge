@@ -125,7 +125,7 @@ STATICFILES_FINDERS = [
 # Media
 
 MEDIA_ROOT = str(APPS_DIR('media'))
-MEDIA_URL = '/media/'
+MEDIA_URL = env.str('MEDIA_URL', '/media/')
 
 # Templates
 
