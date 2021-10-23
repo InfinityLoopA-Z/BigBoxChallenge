@@ -19,6 +19,12 @@ foo@bar:~$ python manage.py makemigrations
 ```console
 foo@bar:~$ python manage.py migrate
 ```
+
+### Generate initial data
+```console
+foo@bar:~$ python manage.py loaddata data.json
+```
+
 ### Running Server:
 ```console
 foo@bar:~$ python manage.py runserver

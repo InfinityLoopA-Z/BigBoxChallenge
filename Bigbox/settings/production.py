@@ -10,7 +10,7 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['*'])
 
 # Port
 
-PORT = env.int("PORT", 8000)
+PORT = env.int('PORT', 8000)
 
 
 # Databases
