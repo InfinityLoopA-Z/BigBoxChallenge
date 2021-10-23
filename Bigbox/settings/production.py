@@ -15,7 +15,7 @@ PORT = env.int("PORT", 8000)
 
 # Databases
 
-DATABASES['default'] = env.db('HEROKU_POSTGRESQL_RED_URL')  # NOQA
+DATABASES['default'] = env.db('HEROKU_DB')  # NOQA
 
 # Security
 
