@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from app.core import models
+from apps.core import models
 
 
 @admin.register(models.BoxImage)

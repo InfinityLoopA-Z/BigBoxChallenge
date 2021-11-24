@@ -4,7 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV POETRY_VIRTUALENVS_CREATE=false
 
 RUN apt-get update -y&&\
-    apt-get install nano -y && \ 
+    apt-get install nano libpq-dev python-dev -y && \ 
     apt-get clean
 
 RUN pip install poetry

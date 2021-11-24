@@ -19,6 +19,9 @@ White-Noise = "^0.1.0"
 gunicorn = "^20.1.0"
 dj-database-url = "^0.5.0"
 psycopg2 = "^2.9.1"
+django-debug-toolbar = "^3.2.2"
+ipython = "^7.29.0"
+Werkzeug = "^2.0.2"
 
 
 [tool.poetry.dev-dependencies]

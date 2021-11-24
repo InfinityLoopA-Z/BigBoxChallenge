@@ -7,6 +7,11 @@ from .base import env
 
 DEBUG = True
 
+# Internal IPs
+INTERNAL_IPS = [
+    '127.0.0.1'
+]
+
 # Security
 
 SECRET_KEY = env('DJANGO_SECRET_KEY', default='%k@1qk(6a6f0q&(8z01m%bck5o+5bs9j5td)4(37n4pm-gon72')
